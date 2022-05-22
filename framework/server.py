@@ -12,4 +12,6 @@ while True:
     data = client.recv(1024).decode()
     print(f' receive data: {data}')
     client.sendall(b'Hello from server \n')
+    print(f'Connections from {address} ', end='')
     client.close()
+    print('closed')
