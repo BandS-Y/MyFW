@@ -29,6 +29,15 @@ class MainPage(View):
         return Response(status='201 Created', body="it's MainPage post ask", headers={'MainPage': '123'})
 
 
+class Contacts(View):
+
+    def get(self, request, *args, **kwargs):
+        body = render('contacts.html')
+        return Response(body=body)
+
+    def post(self, request, *args, **kwargs):
+        return Response(status='201 Created', body="it's contacts post ask", headers={'MainPage': '123'})
+
 class NotFound404(View):
 
     def get(self, request, *args, **kwargs):
@@ -41,7 +50,8 @@ class NotFound404(View):
 
 urls = [
     Url('/mainpage', MainPage),
-    Url('/about', About)
+    Url('/about', About),
+    Url('/contacts', Contacts)
 ]
 
 app = Framework(urls)
