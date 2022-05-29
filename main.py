@@ -7,6 +7,9 @@ from framework.template import render
 
 class About(View):
 
+    # def __init__(self):
+    #     super().__init__()
+
     def get(self, request, *args, **kwargs):
         body = render('authors.html', object_list=[{'name': 'Leo'}, {'name': 'Kate'}])
         return Response(body=body)
