@@ -2,8 +2,11 @@
 """
 Используем шаблонизатор Jinja2
 """
+import sys
 
 from jinja2 import Template
+
+sys.path.append('../')
 
 
 def render(template_name, **kwargs):
@@ -14,7 +17,7 @@ def render(template_name, **kwargs):
     :return:
     """
     # Открываем шаблон по имени
-    with open(template_name, encoding='utf-8') as f:
+    with open('templates/' + template_name, encoding='utf-8') as f:
         # Читаем
         template = Template(f.read())
         # рендерим шаблон с параметрами

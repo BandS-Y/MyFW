@@ -14,7 +14,7 @@ class Request:
         return headers
 
     def _get_query(self, querys):
-        query_param = {}
+        query_params = {}
         print(querys)
 
         if not querys:
@@ -23,7 +23,10 @@ class Request:
         querys = querys.split('&')
         for query in querys:
             key, value = query.split('=')
-            query_param[key] = value
-        return query_param
-        # return querys
+            if query_params.get(key):
+                query_params[key].append(value)
+            else:
+                query_params[key] = [value]
+        return query_params
+
 
