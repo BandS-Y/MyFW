@@ -15,7 +15,6 @@ class About(View):
         return Response(body=body)
 
     def post(self, request, *args, **kwargs):
-
         return Response(status='201 Created', body="it's About post ask", headers={'About': '123'})
 
 
@@ -23,6 +22,7 @@ class MainPage(View):
 
     def get(self, request, *args, **kwargs):
         body = render('mainpage.html')
+        # body = render('hometest.html')
         return Response(body=body)
 
     def post(self, request, *args, **kwargs):
@@ -38,6 +38,7 @@ class Contacts(View):
     def post(self, request, *args, **kwargs):
         return Response(status='201 Created', body="it's contacts post ask", headers={'MainPage': '123'})
 
+
 class NotFound404(View):
 
     def get(self, request, *args, **kwargs):
@@ -46,6 +47,17 @@ class NotFound404(View):
 
     def post(self, request, *args, **kwargs):
         return Response(status='404 WHAT', body="404 PAGE Not Found", headers={'404 WHAT': '123'})
+
+class Style(View):
+
+    def get(self, request, *args, **kwargs):
+        body = render('style.css')
+        return Response(body=body, headers={'Content-Type': 'text/css'})
+
+    def post(self, request, *args, **kwargs):
+        body = render('style.css')
+        return Response(body=body, headers={'Content-Type': 'text/css'})
+
 
 
 urls = [
