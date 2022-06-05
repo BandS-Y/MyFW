@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-</head>
-<body>
-    <h1>About</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block add_menu %}
+            <a href="#home">About 1</a>
+            <a href="#news">About 2</a>
+{% endblock %}
+
+{% block add_dropdown %}
+        <a href="#">About 4</a>
+        <a href="#">About 5</a>
+{% endblock %}
+
+{% block content %}
+    <h1>Main Page</h1>
+    <p class="important">
+      Welcome to my About page.
+    </p>
+{% endblock %}
