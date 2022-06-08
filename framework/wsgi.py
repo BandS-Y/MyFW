@@ -20,7 +20,7 @@ class Framework:
 
     def _get_view(self, request: Request):
         print('_get_view: ', end='')
-        print(request.path)
+        # print(request.path)
         # Убираем лишний слэш в пути
         if request.path[-1:] == '/':
             path = request.path[:-1]
@@ -28,17 +28,17 @@ class Framework:
             path = request.path
 
         for url in self.urls:
-            print(url.path)
+            # print(url.path)
             if url.path == path:
                 url_return = url.view
                 print(url_return)
                 return url_return
             if path == "/styles.css":
-                print("I'm here styles.css")
+                # print("I'm here styles.css")
                 url_return = main.Style
                 return url_return
         url_return = main.NotFound404
-        print(url_return)
+        # print(url_return)
         return url_return
 
     def _get_response(self, request: Request, view: View):
