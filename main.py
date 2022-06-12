@@ -7,15 +7,11 @@ from framework.template import render
 
 class About(View):
 
-    # def __init__(self):
-    #     super().__init__()
-
     def get(self, request, *args, **kwargs):
-        body = render('authors.html', object_list=[{'name': 'Leo'}, {'name': 'Kate'}])
+        body = render('about.html', object_list=[{'name': 'Leo'}, {'name': 'Kate'}])
         return Response(body=body)
 
     def post(self, request, *args, **kwargs):
-
         return Response(status='201 Created', body="it's About post ask", headers={'About': '123'})
 
 
@@ -29,6 +25,16 @@ class MainPage(View):
         return Response(status='201 Created', body="it's MainPage post ask", headers={'MainPage': '123'})
 
 
+class Contacts(View):
+
+    def get(self, request, *args, **kwargs):
+        body = render('contacts.html')
+        return Response(body=body)
+
+    def post(self, request, *args, **kwargs):
+        return Response(status='201 Created', body="it's contacts post ask", headers={'MainPage': '123'})
+
+
 class NotFound404(View):
 
     def get(self, request, *args, **kwargs):
@@ -39,9 +45,23 @@ class NotFound404(View):
         return Response(status='404 WHAT', body="404 PAGE Not Found", headers={'404 WHAT': '123'})
 
 
+class Style(View):
+
+    def get(self, request, *args, **kwargs):
+        body = render('style.css')
+        return Response(body=body, headers={'Content-Type': 'text/css'})
+
+    def post(self, request, *args, **kwargs):
+        body = render('style.css')
+        return Response(body=body, headers={'Content-Type': 'text/css'})
+
+
 urls = [
+    Url('', MainPage),
     Url('/mainpage', MainPage),
-    Url('/about', About)
+    Url('/about', About),
+    Url('/contacts', Contacts)
 ]
+
 
 app = Framework(urls)
