@@ -8,11 +8,9 @@ class AbstractCategory(ABC):
 
 
 class CategoryCourse(AbstractCategory):
-    instances = []
 
     def __init__(self, name):
         self.name = name
-        self.__class__.instances.append(self)
         print(f'создана категория {name}')
 
     @classmethod

@@ -1,16 +1,18 @@
 import sys
 
 from courses.types_course import TypeCourse
+from courses.levels import LevelCourses
 
 load_categories = {
     'Python': 'python',
-    'Java': 'java'
+    'Java': 'java',
+    'JavaScript': 'javascript'
 }
 
 load_levels = {
-    'junior': 'junior',
-    'middle': 'middle',
-    'senior': 'senior'
+    'junior': LevelCourses.level_junior,
+    'middle': LevelCourses.level_middle,
+    'senior': LevelCourses.level_senior
 }
 
 load_types = {
