@@ -3,8 +3,10 @@ from framework.url import Url
 from framework.view import View
 from framework.response import Response
 from framework.template import render
+from framework.view_logger import Logger
 
 
+@Logger
 class About(View):
 
     def get(self, request, *args, **kwargs):
