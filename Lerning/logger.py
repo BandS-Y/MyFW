@@ -8,8 +8,8 @@ class Writer(metaclass=abc.ABCMeta):
 
 
 class ConcreteWriter(Writer):
-    def write_message(self):
-        print('writing message')
+    def write_message(self, message):
+        print(message)
 
 
 class WriterDecorator(Writer, metaclass=abc.ABCMeta):
@@ -22,19 +22,20 @@ class WriterDecorator(Writer, metaclass=abc.ABCMeta):
 
 
 class CheckLengthDecorator(WriterDecorator):
-    def write_message(self):
+    def write_message(self, message):
         print('checking message length')
-        self._component.write_message()
+        self._component.write_message(message)
 
 
 class CompressDecorator(WriterDecorator):
-    def write_message(self):
+    def write_message(self, message):
         print('compressing message')
-        self._component.write_message()
+        self._component.write_message(message)
         print('check compressed length')
 
 
 concrete_writer = ConcreteWriter()
+# concrete_writer.write_message('writing message')
 check_length_decorator = CheckLengthDecorator(concrete_writer)
 compress_decorator = CompressDecorator(check_length_decorator)
-compress_decorator.write_message()
+compress_decorator.write_message('writing message')
