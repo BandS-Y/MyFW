@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from framework.response import Response
 from framework.view import View
+import time
 
 
 class ViewLogger(View, ABC):
@@ -20,9 +21,16 @@ class Logger(ViewLogger):
 
     def get(self, request, *args, **kwargs) -> Response:
         print('GET logger')
-        print(f'что приходит в request {request} \n  в args {args} \n в kwargs {kwargs}')
-        self.view.get(self, request, *args, **kwargs)
+        start = time.time()
+        ret = self.view.get(self, request, *args, **kwargs)
+        end = time.time()
+        print(f'Время выполнения представления: {self.view.__name__} {round(end-start, 4)} секунд')
+        return ret
 
     def post(self, request, *args, **kwargs) -> Response:
         print('POST logger')
-        self.view.post(self, request, *args, **kwargs)
+        start = time.time()
+        ret = self.view.get(self, request, *args, **kwargs)
+        end = time.time()
+        print(f'Время выполнения представления: {self.view.__name__} {round(end-start, 4)} секунд')
+        return ret

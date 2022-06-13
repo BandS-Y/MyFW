@@ -15,11 +15,12 @@ class Framework:
         request = Request(environ)
         view = self._get_view(request)
         response = self._get_response(request, view)
+        # print(f'response.status {response.status}')
         start_response(response.status, list(response.headers.items()))
         return [response.body.encode()]
 
     def _get_view(self, request: Request):
-        print('_get_view: ', end='')
+        # print('_get_view: ', end='')
         # print(request.path)
         # Убираем лишний слэш в пути
         if request.path[-1:] == '/':
@@ -31,7 +32,7 @@ class Framework:
             # print(url.path)
             if url.path == path:
                 url_return = url.view
-                print(url_return)
+                # print(url_return)
                 return url_return
             if path == "/styles.css":
                 # print("I'm here styles.css")
@@ -42,8 +43,7 @@ class Framework:
         return url_return
 
     def _get_response(self, request: Request, view: View):
-        print('_get_response: ', end='')
-        print(view, request.method)
+        # print('_get_response: ', end='')
         if hasattr(view, request.method):
             return getattr(view, request.method)(view, request)
         # if

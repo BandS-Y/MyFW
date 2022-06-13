@@ -3,13 +3,8 @@ import abc
 
 class Writer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def write_message(self):
-        pass
-
-
-class ConcreteWriter(Writer):
     def write_message(self, message):
-        print(message)
+        pass
 
 
 class WriterDecorator(Writer, metaclass=abc.ABCMeta):
@@ -17,25 +12,38 @@ class WriterDecorator(Writer, metaclass=abc.ABCMeta):
         self._component = component
 
     @abc.abstractmethod
-    def write_message(self):
+    def write_message(self, message):
         pass
 
 
 class CheckLengthDecorator(WriterDecorator):
     def write_message(self, message):
         print('checking message length')
-        self._component.write_message(message)
+        res = self._component.write_message(self, message)
+        return res
 
 
 class CompressDecorator(WriterDecorator):
     def write_message(self, message):
         print('compressing message')
-        self._component.write_message(message)
+        res = self._component.write_message(message)
         print('check compressed length')
+        return res
 
 
-concrete_writer = ConcreteWriter()
-# concrete_writer.write_message('writing message')
-check_length_decorator = CheckLengthDecorator(concrete_writer)
-compress_decorator = CompressDecorator(check_length_decorator)
-compress_decorator.write_message('writing message')
+@CompressDecorator
+@CheckLengthDecorator
+class ConcreteWriter(Writer):
+    def write_message(self, message):
+        # print(f'вывожу сообщение: {message}')
+        return f'вывожу сообщение: {message}'
+
+
+concrete_writer = ConcreteWriter
+
+print(concrete_writer.write_message('writing message'))
+
+
+# check_length_decorator = CheckLengthDecorator(concrete_writer)
+# compress_decorator = CompressDecorator(check_length_decorator)
+# compress_decorator.write_message('writing message')

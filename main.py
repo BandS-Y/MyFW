@@ -16,7 +16,7 @@ class About(View):
     def post(self, request, *args, **kwargs):
         return Response(status='201 Created', body="it's About post ask", headers={'About': '123'})
 
-
+@Logger
 class MainPage(View):
 
     def get(self, request, *args, **kwargs):
