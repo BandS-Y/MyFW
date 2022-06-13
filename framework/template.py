@@ -4,7 +4,7 @@
 """
 import sys
 
-from jinja2 import Template
+from jinja2 import Template, FileSystemLoader, Environment, select_autoescape
 
 sys.path.append('../')
 
@@ -16,13 +16,21 @@ def render(template_name, **kwargs):
     :param kwargs: параметры для передачи в шаблон
     :return:
     """
-    # Открываем шаблон по имени
-    with open('templates/' + template_name, encoding='utf-8') as f:
-        # Читаем
-        template = Template(f.read())
-        # рендерим шаблон с параметрами
-        return template.render(**kwargs)
 
+    env = Environment(
+        loader=FileSystemLoader('./templates/'),
+        autoescape=select_autoescape(['html', 'xml'])
+    )
+
+    # # Открываем шаблон по имени
+    # with open('templates/' + template_name, encoding='utf-8') as f:
+    #     # Читаем
+    #     template = Template(f.read())
+    #     # рендерим шаблон с параметрами
+    #     return template.render(**kwargs)
+
+    template = env.get_template(template_name)
+    return template.render(**kwargs)
 
 if __name__ == '__main__':
     # Пример использования
