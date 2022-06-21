@@ -1,3 +1,4 @@
+import main_3
 from framework.wsgi import Framework
 from framework.url import Url
 from framework.view import View
@@ -65,5 +66,5 @@ urls = [
     Url('/contacts', Contacts)
 ]
 
-
+main_3
 app = Framework(urls)
