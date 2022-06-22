@@ -29,6 +29,7 @@ for student in Students.instances:
     for i in range(3):
         student.add_course(CoursesFactory.instances[random.randint(0, courses_count-1)])
 
+
 for student in Students.instances:
     print(student)
 

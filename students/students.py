@@ -33,7 +33,7 @@ class Students(AbstractStudent, Subscriber):
         self.notify(course)
         print(f'печатаем объект: {self}')
         student = self
-        CoursesFactory.subscribe(self)
+        # CoursesFactory.subscribe(self)
         # print(f' add in list: {self.courses}')
         return self
 

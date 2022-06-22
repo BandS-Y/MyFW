@@ -1,18 +1,13 @@
-import sys
 from abc import ABC, abstractmethod
 
 from courses import base_load
 from courses.category import CategoryCourse
 from courses.notify import Publisher
 
-sys.path.append('../')
-
-import courses.base_load
-import courses.types_course
-
 
 class AbstractCourses(ABC):
 
+    @abstractmethod
     def create_type(self, type_course):
         pass
 
@@ -55,7 +50,7 @@ class CoursesFactory(AbstractCourses, Publisher):
             return None
 
     def subscribe(self):
-        self.student.add(student)
+        self.student.add(self)
 
     def unsubscribe(self, student):
         self.student.discard(student)
