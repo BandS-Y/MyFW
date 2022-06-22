@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
-</head>
-<body>
-    <h1>Main Page</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Обучаемся программировать!!!{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block add_menu %}
+
+{% endblock %}
+
+{% block add_dropdown %}
+
+{% endblock %}
+
+{% block content %}
+    <h1>Обучаемся программировать!!!</h1>
+    <p class="important">
+      Добро пожаловать на главную страницу сайта по обучению программированию!<br>
+        Здесь вы можете обучиться программировать на любом из языков программирования <br>
+        достаточно выбрать понравившийся вам и уровень владения языком<br>
+        Так же вы можете обучаться как в онлай, так и в офлайн!<br>
+
+
+    </p>
+{% endblock %}

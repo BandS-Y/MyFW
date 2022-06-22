@@ -27,6 +27,7 @@ class Request:
                 query_params[key].append(value)
             else:
                 query_params[key] = [value]
+        print(query_params)
         return query_params
 
 

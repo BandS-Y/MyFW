@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Main Page{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>Contacts</h1>
+<!--    action="http://127.0.0.1:8000/contacts"-->
+    <form method="GET" name="filter" >
+        <p>Форма отправки сообщения</p>
+            <label for="topic"> Тема сообщения </label><br>
+            <input id="topic" name="topic"><br><br>
+            <label for="message"> Cообщение </label><br>
+            <textarea rows="10" cols="50" id="message" name="message"></textarea><br><br>
+            <label for="email">Email</label><br>
+            <input id="email" name="email"><br><br>
+        <input type="submit" value="Отправить"></input>
+    </form>
+{% endblock %}
