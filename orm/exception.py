@@ -16,3 +16,4 @@ class DbUpdateException(Exception):
 class DbDeleteException(Exception):
     def __init__(self, message):
         super().__init__(f'Db delete error: {message}')
+

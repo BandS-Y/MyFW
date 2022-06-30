@@ -1,5 +1,4 @@
 import threading
-
 from orm.mapper_registry import MapperRegistry
 
 
@@ -52,3 +51,6 @@ class UnitOfWork:
     @classmethod
     def get_current(cls):
         return cls.current.unit_of_work
+
+
+
