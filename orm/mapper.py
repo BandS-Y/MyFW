@@ -24,9 +24,12 @@ class PersonMapper:
             raise RecordNotFoundException(f'record with id={id_person} not found')
 
     def insert(self, person):
+        print('try insert(self, person) 1')
         statement = f"INSERT INTO PERSON (FIRSTNAME, LASTNAME,  email, telephone) VALUES (?, ?, ?, ?)"
+        print(statement, person.first_name, person.last_name, person.email, person.telephone)
         self.cursor.execute(statement, (person.first_name, person.last_name, person.email, person.telephone))
         try:
+            print('try insert(self, person) 2')
             self.connection.commit()
         except Exception as e:
             raise DbCommitException(e.args)
@@ -67,9 +70,9 @@ class CategoryMapper:
 
     def insert(self, my_category):
         print('try insert(self, category) 1')
-        statement = f"INSERT INTO categories (categoryname) VALUES (?)"
+        statement = f"INSERT INTO CATEGORIES (CATEGORYNAME) VALUES (?)"
         print(statement, my_category.name)
-        self.cursor.execute(statement, my_category.name)
+        self.cursor.execute(statement, (my_category.name,))
         print(statement, my_category.name)
         try:
             print('try insert(self, category) 2')
