@@ -24,12 +24,12 @@ class PersonMapper:
             raise RecordNotFoundException(f'record with id={id_person} not found')
 
     def insert(self, person):
-        print('try insert(self, person) 1')
+        # print('try insert(self, person) 1')
         statement = f"INSERT INTO PERSON (FIRSTNAME, LASTNAME,  email, telephone) VALUES (?, ?, ?, ?)"
-        print(statement, person.first_name, person.last_name, person.email, person.telephone)
+        # print(statement, person.first_name, person.last_name, person.email, person.telephone)
         self.cursor.execute(statement, (person.first_name, person.last_name, person.email, person.telephone))
         try:
-            print('try insert(self, person) 2')
+            # print('try insert(self, person) 2')
             self.connection.commit()
         except Exception as e:
             raise DbCommitException(e.args)
@@ -69,13 +69,13 @@ class CategoryMapper:
             raise RecordNotFoundException(f'record with id={id_category} not found')
 
     def insert(self, my_category):
-        print('try insert(self, category) 1')
+        # print('try insert(self, category) 1')
         statement = f"INSERT INTO CATEGORIES (CATEGORYNAME) VALUES (?)"
-        print(statement, my_category.name)
+        # print(statement, my_category.name)
         self.cursor.execute(statement, (my_category.name,))
-        print(statement, my_category.name)
+        # print(statement, my_category.name)
         try:
-            print('try insert(self, category) 2')
+            # print('try insert(self, category) 2')
             self.connection.commit()
         except Exception as e:
             raise DbCommitException(e.args)
@@ -114,10 +114,10 @@ class LevelMapper:
             raise RecordNotFoundException(f'record with id={id_level} not found')
 
     def insert(self, my_level):
-        print('try insert(self, levels) 1')
+        # print('try insert(self, levels) 1')
         statement = f"INSERT INTO levels (levelname) VALUES (?)"
-        print(statement, my_level.name)
-        self.cursor.execute(statement, my_level.name)
+        # print(statement, my_level.name)
+        self.cursor.execute(statement, (my_level.name,))
         try:
             self.connection.commit()
         except Exception as e:
@@ -157,7 +157,7 @@ class TypeMapper:
 
     def insert(self, type):
         statement = f"INSERT INTO types (typename) VALUES (?)"
-        self.cursor.execute(statement, type.name)
+        self.cursor.execute(statement, (type.name,))
         try:
             self.connection.commit()
         except Exception as e:
