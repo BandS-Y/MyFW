@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>404 Error Page not found</title>
-</head>
-<body>
-    <h1>404 Error </h1>
-    <h1>Page not found</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}404 Error{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <p class="important">
+    <h1>404 Error</h1>
+    <ul>
+        Очень сожалеем, но такой страницы на нашем сайте не существует!
+    </ul>
+    </p>
+{% endblock %}
